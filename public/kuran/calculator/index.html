@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>PCR Toolkit</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <!-- Static navbar -->
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">PCR Toolkit</a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+
+                            <li><a href="../../">验证</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                    aria-haspopup="true" aria-expanded="false">会战<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-header">作业</li>
+                                    <li><a href="../reference">会战作业</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li class="dropdown-header">计算工具</li>
+                                    <li class="active"><a href="#">尾刀计算</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+                <!--/.container-fluid -->
+            </nav>
+
+            <div id="calculator">
+                <div class="panel panel-default" style="width: 25%; float: left;">
+                    <div class="panel-heading">造成伤害（万）</div>
+                    <div class="panel-body" style="height: 70px;">
+                        <input style="width: 80%; float: left;" v-model="damage" maxlength="20" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="panel panel-default" style="width: 25%; float: left;">
+                    <div class="panel-heading">剩余血量（万）</div>
+                    <div class="panel-body" style="height: 70px;">
+                        <input v-model="rest" maxlength="20" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="panel panel-default" style="width: 25%; float: left;">
+                    <div class="panel-heading">返回秒数</div>
+                    <div class="panel-body" style="height: 70px;">
+                        {{ re }}秒
+                    </div>
+                </div>
+                <div class="panel panel-default" style="width: 25%; float: left;">
+                    <div class="panel-heading">白嫖所需最低伤害</div>
+                    <div class="panel-body" style="height: 70px;">
+                        {{ mix }}万
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+
+
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.6.11/vue.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.19.2/axios.min.js"></script>
+    <script src="../../root.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>

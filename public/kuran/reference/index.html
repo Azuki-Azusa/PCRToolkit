@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>PCR Toolkit</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <!-- Static navbar -->
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">PCR Toolkit</a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+
+                            <li><a href="../..">验证</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                    aria-haspopup="true" aria-expanded="false">会战<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-header">作业</li>
+                                    <li class="active"><a href="#">会战作业</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li class="dropdown-header">计算工具</li>
+                                    <li><a href="../calculator">尾刀计算</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+                <!--/.container-fluid -->
+            </nav>
+
+            <div id='reference'>
+                <div style="width: 10%; float: left;" id="sidebarMonth">
+                    <div class="list-group">
+                        <button v-for='date in dates' v-on:click="active_date(date.date_id)"
+                            v-bind:class="{ active: date.date_id == date_id }"
+                            class="date list-group-item">{{ date.date }}</button>
+                    </div>
+                </div>
+                <div style="float:left;width: 0.5%;height: 640px; background: black;"></div>
+                <div style="width: 9.5%; float: left;" id="sidebarRound">
+                    <div class="list-group">
+                        <button v-bind:class="{ active: round_index == 4 }" v-on:click="round_index = 4"
+                            class="round list-group-item">四阶段</button>
+                        <button v-bind:class="{ active: round_index == 3 }" v-on:click="round_index = 3"
+                            class="round list-group-item">三阶段</button>
+                        <button v-bind:class="{ active: round_index == 2 }" v-on:click="round_index = 2"
+                            class="round list-group-item">二阶段</button>
+                        <button v-bind:class="{ active: round_index == 1 }" v-on:click="round_index = 1"
+                            class="round list-group-item">一阶段</button>
+                    </div>
+                </div>
+                <div style="width: 80%; float: left;">
+                    <div>
+                        <div style="width: 80%; float: left;" class="btn-group" role="group" aria-label="First group">
+                            <button style="width: 20%;" type="button" v-bind:class="{ active: boss_index == 1 }"
+                                v-on:click="boss_index = 1" class="boss btn btn-default">1</button>
+                            <button style="width: 20%;" type="button" v-bind:class="{ active: boss_index == 2 }"
+                                v-on:click="boss_index = 2" class="boss btn btn-default">2</button>
+                            <button style="width: 20%;" type="button" v-bind:class="{ active: boss_index == 3 }"
+                                v-on:click="boss_index = 3" class="boss btn btn-default">3</button>
+                            <button style="width: 20%;" type="button" v-bind:class="{ active: boss_index == 4 }"
+                                v-on:click="boss_index = 4" class="boss btn btn-default">4</button>
+                            <button style="width: 20%;" type="button" v-bind:class="{ active: boss_index == 5 }"
+                                v-on:click="boss_index = 5" class="boss btn btn-default">5</button>
+                        </div>
+                        <div style="width: 20%; float: left;" class="btn-group" role="group" aria-label="Second group">
+                            <button style="width: 100%" type="button" class="btn btn-default" data-toggle="modal"
+                                data-target="#myModal">New</button>
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+                                aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="myModalLabel">创建作业</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div>
+                                                <div class="panel panel-default" style="width: 50%; float: left;">
+                                                    <div class="panel-heading">发布人</div>
+                                                    <div class="panel-body">
+                                                        <input v-model="createInfo.nickname" maxlength="20" type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="panel panel-default" style="width: 50%; float: left;">
+                                                    <div class="panel-heading">操作</div>
+                                                    <div class="panel-body">
+                                                        <select v-model="createInfo.auto" class="form-control">
+                                                            <option value=0>手操</option>
+                                                            <option value=1>半Auto</option>
+                                                            <option value=2>Auto</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="panel panel-default" style="width: 50%; float: left;">
+                                                    <div class="panel-heading">阶段</div>
+                                                    <div class="panel-body">
+                                                        <select v-model="createInfo.round" class="form-control">
+                                                            <option value=4>四阶段</option>
+                                                            <option value=3>三阶段</option>
+                                                            <option value=2>二阶段</option>
+                                                            <option value=1>一阶段</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="panel panel-default" style="width: 50%; float: left;">
+                                                    <div class="panel-heading">BOSS</div>
+                                                    <div class="panel-body">
+                                                        <select v-model="createInfo.boss" class="form-control">
+                                                            <option value=5>B5</option>
+                                                            <option value=4>B4</option>
+                                                            <option value=3>B3</option>
+                                                            <option value=2>B2</option>
+                                                            <option value=1>B1</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="panel panel-default" style="width: 50%; float: left;">
+                                                    <div class="panel-heading">阵容</div>
+                                                    <div class="panel-body">
+                                                        <input v-model="createInfo.team" maxlength="20" type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="panel panel-default" style="width: 50%; float: left;">
+                                                    <div class="panel-heading">伤害</div>
+                                                    <div class="panel-body">
+                                                        <input v-model="createInfo.damage" maxlength="20" type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">描述</div>
+                                                    <div class="panel-body">
+                                                        <textarea maxlength="400" v-model="createInfo.description" style="height: 400px;" type="text" class="form-control" placeholder="可描述阵容配置、暴毙点、视频链接、时间轴"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default"
+                                                data-dismiss="modal">关闭</button>
+                                            <button type="button" class="btn btn-primary" v-on:click="create">创建</button>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal -->
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div style="height: 600px">
+                        <div style="width: 50%; height: 600px; float: left; overflow-y: scroll">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>阵容</th>
+                                        <th>伤害</th>
+                                        <th>操作</th>
+                                        <th>时间</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="cursor: pointer;" v-for="(reference, index) in references"
+                                        v-on:click="selectReference(index)"
+                                        v-show="reference.round == round_index && reference.boss == boss_index"
+                                        v-bind:class="{ active: index == reference_index}">
+                                        <td>{{ reference.team }}</td>
+                                        <td>{{ reference.damage }}</td>
+                                        <td><span class="label label-success">{{ auto[reference.auto] }}</span></td>
+                                        <td>{{ reference.date }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div style="width: 50%; height: 600px; float: left; overflow-y: scroll">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">伤害</div>
+                                <div class="panel-body">
+                                    {{ kwsk.damage }}
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">阵容</div>
+                                <div class="panel-body">
+                                    {{ kwsk.team }}
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">发布者</div>
+                                <div class="panel-body">
+                                    {{ kwsk.nickname }}
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">描述/链接/时轴</div>
+                                <div class="panel-body">
+                                    {{ kwsk.description }}
+                                </div>
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-danger" v-on:click="remove">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+    </div>
+
+
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.6.11/vue.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.19.2/axios.min.js"></script>
+    <script src="../../root.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
