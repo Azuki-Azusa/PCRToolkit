@@ -3,10 +3,12 @@ var verify = new Vue({
     data: {
         show: true,
         alarm: false,
-        token: ""
+        token: "",
+        buttonText: "Verify"
     },
     methods: {
         submit: function () {
+            this.buttonText = "Loading...";
             let url = host + '/verify/' + this.token;
             let _this = this;
             $.get(url, function (data, status) {
@@ -18,11 +20,13 @@ var verify = new Vue({
                     }
                     // 获取失败
                     else {
+                        _this.buttonText = "Verify";
                         _this.alarm = true;
                     }
                 }
                 // 路由失败
                 else {
+                    _this.buttonText = "Verify";
                     alert(error);
                 }
             });

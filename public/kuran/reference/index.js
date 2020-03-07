@@ -23,7 +23,8 @@ new Vue({
             team: "",
             damage: "",
             description: ""
-        }
+        },
+        createButton: "确认"
     },
     methods: {
         active_date: function (date_id) {
@@ -61,6 +62,7 @@ new Vue({
             this.kwsk = this.references[index];
         },
         create: function () {
+            this.createButton = "Loading...";
             let url = host + '/createReference';
             let _this = this;
             let data = {
@@ -88,11 +90,13 @@ new Vue({
                         }
 
                         else {
+                            _this.createButton = "确认";
                             alert(data["errmsg"]);
                         }
                     }
                     // 路由失败
                     else {
+                        _this.createButton = "确认";
                         alert(data["errmsg"]);
                     }
                 });
@@ -150,6 +154,7 @@ new Vue({
                     // 获取失败
                     else {
                         $.removeCookie('pcrtoolkit');
+                        alert("无使用权");
                     }
                 }
                 // 路由失败
@@ -157,6 +162,9 @@ new Vue({
                     alert(data["errmsg"])
                 }
             });
+        }
+        else {
+            alert("无使用权");
         }
     }
 });
