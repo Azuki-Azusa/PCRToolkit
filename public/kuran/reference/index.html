@@ -49,8 +49,8 @@
                             class="date list-group-item">{{ date.date }}</button>
                     </div>
                 </div>
-                <div style="float:left;width: 0.5%;height: 640px; background: black;"></div>
-                <div style="width: 9.5%; float: left;" id="sidebarRound">
+                <div v-show="show" style="float:left;width: 0.5%;height: 640px; background: black;"></div>
+                <div v-show="show" style="width: 9.5%; float: left;" id="sidebarRound">
                     <div class="list-group">
                         <button v-bind:class="{ active: round_index == 4 }" v-on:click="round_index = 4"
                             class="round list-group-item">四阶段</button>
@@ -62,7 +62,7 @@
                             class="round list-group-item">一阶段</button>
                     </div>
                 </div>
-                <div style="width: 80%; float: left;">
+                <div v-show="show" style="width: 80%; float: left;">
                     <div>
                         <div style="width: 80%; float: left;" class="btn-group" role="group" aria-label="First group">
                             <button style="width: 20%;" type="button" v-bind:class="{ active: boss_index == 1 }"

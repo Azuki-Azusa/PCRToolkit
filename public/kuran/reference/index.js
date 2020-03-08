@@ -1,6 +1,7 @@
 new Vue({
     el: '#reference',
     data: {
+        show: false,
         token: null,
         date_id: 0,
         dates: [],
@@ -45,6 +46,7 @@ new Vue({
                                 return b.reference_id - a.reference_id;
                             });
                         }
+                        _this.show = true;
                         // _this.kwsk = _this.references[0] ? _this.references[0] : _this.kwsk;
                     }
                     // 获取失败
