@@ -45,23 +45,23 @@
                 <div class="panel panel-default" style="width: 25%; float: left;">
                     <div class="panel-heading">造成伤害（万）</div>
                     <div class="panel-body" style="height: 70px;">
-                        <input style="width: 80%; float: left;" v-model="damage" maxlength="20" type="text" class="form-control">
+                        <input style="width: 80%; float: left;" v-model="damage" maxlength="20" type="number" class="form-control">
                     </div>
                 </div>
                 <div class="panel panel-default" style="width: 25%; float: left;">
                     <div class="panel-heading">剩余血量（万）</div>
                     <div class="panel-body" style="height: 70px;">
-                        <input v-model="rest" maxlength="20" type="text" class="form-control">
+                        <input v-model="rest" maxlength="20" type="number" class="form-control">
                     </div>
                 </div>
                 <div class="panel panel-default" style="width: 25%; float: left;">
-                    <div class="panel-heading">返回秒数</div>
+                    <div class="panel-heading">尾刀返回秒数</div>
                     <div class="panel-body" style="height: 70px;">
                         {{ re }}秒
                     </div>
                 </div>
                 <div class="panel panel-default" style="width: 25%; float: left;">
-                    <div class="panel-heading">白嫖所需最低伤害</div>
+                    <div class="panel-heading">白嫖所需伤害</div>
                     <div class="panel-body" style="height: 70px;">
                         {{ mix }}万
                     </div>
