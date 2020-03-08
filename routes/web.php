@@ -16,6 +16,10 @@ Route::get('/weigemen', function() {
     echo '有大事宣布';
 });
 
+Route::get('/xizi', function() {
+    echo '<img src="http://www.azukiazusa.site/res/xizi.png"/>';
+});
+
 Route::fallback(function () {
     $req = array('errcode' => 404, 'errmsg' => "Not found", 'data' => null);
     echo json_encode($req, JSON_UNESCAPED_UNICODE);
