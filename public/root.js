@@ -1,5 +1,5 @@
-var root = 'http://localhost/'
-// var root = 'http://34.97.5.31/';
+// root = 'http://localhost/'
+var root = 'http://34.97.5.31/';
 // var host = 'http://yapi.demo.qunar.com/mock/86261';
 var host = root + 'api';
 
