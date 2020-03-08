@@ -12,7 +12,9 @@
 */
 Route::get('/', 'Controller@homePage');
 
-
+Route::get('/weigemen', function() {
+    echo '有大事宣布';
+});
 
 Route::fallback(function () {
     $req = array('errcode' => 404, 'errmsg' => "Not found", 'data' => null);
