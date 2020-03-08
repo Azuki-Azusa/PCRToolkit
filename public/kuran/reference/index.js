@@ -32,6 +32,7 @@ new Vue({
             this.getReferences(this.date_id);
         },
         getReferences: function (date_id) {
+            this.references = [];
             let url = host + '/references/' + this.token + '/' + date_id;
             let _this = this;
             $.get(url, function (data, status) {
