@@ -42,7 +42,7 @@
             </nav>
 
             <div id="verify">
-                <template class="jumbotron" v-if='show'>
+                <template class="jumbotron" v-if='show1'>
                     <h1 align="center">本站作业不对外开放</h1>
                     <br>
                     <input v-model='token' id="password" class="form-control" placeholder="邀请码" required>
@@ -51,7 +51,7 @@
                     <br>
                     <div v-if='alarm' class="alert alert-danger" role="alert">邀请码有误</div>
                 </template>
-                <template hidden class="jumbotron" v-else>
+                <template hidden class="jumbotron" v-if='show2'>
                     <h2>已验证</h2>
                 </template>
             </div>

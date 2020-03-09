@@ -1,7 +1,8 @@
 var verify = new Vue({
     el: '#verify',
     data: {
-        show: true,
+        show1: false,
+        show2: false,
         alarm: false,
         token: "",
         buttonText: "Verify"
@@ -15,7 +16,8 @@ var verify = new Vue({
                 if (data["errcode"] == 200) {
                     data = data["data"];
                     if (data["errcode"] == 0) {
-                        _this.show = false;
+                        _this.show2 = true;
+                        _this.show1 = false;
                         $.cookie('pcrtoolkit', _this.token, { expires: 365 });
                     }
                     // 获取失败
@@ -41,23 +43,23 @@ var verify = new Vue({
                 if (data["errcode"] == 200) {
                     data = data["data"];
                     if (data["errcode"] == 0) {
-                        _this.show = false;
+                        _this.show2 = true;
                     }
                     // 获取失败
                     else {
-                        _this.show = true;
+                        _this.show1 = true;
                         $.removeCookie('pcrtoolkit');
                     }
                 }
                 // 路由失败
                 else {
-                    _this.show = true;
+                    _this.show1 = true;
                     alert(data["errmsg"])
                 }
             });
         }
         else {
-            _this.show = true;
+            _this.show1 = true;
         }
     }
 })
