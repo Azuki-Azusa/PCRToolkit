@@ -1,5 +1,5 @@
-root = 'http://localhost/'
-// root = 'http://www.azukiazusa.site/';
+// root = 'http://localhost/'
+root = 'http://www.azukiazusa.site/';
 // var host = 'http://yapi.demo.qunar.com/mock/86261';
 var host = root + 'api';
 
