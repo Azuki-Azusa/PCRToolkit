@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>PCR Toolkit</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <!-- Static navbar -->
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">PCR Toolkit</a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <navbar></navbar>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+                <!--/.container-fluid -->
+            </nav>
+
+            <div id="calculator">
+                <div class="panel panel-default" style="width: 20%; float: left">
+                    <div class="panel-heading">血条总长度</div>
+                    <div class="panel-body" style="height: 70px;">
+                        <input v-model="hpLengthTotal" maxlength="20" type="number" class="form-control">
+                    </div>
+                </div>
+                <div class="panel panel-default" style="width: 20%; float: left">
+                    <div class="panel-heading">血条剩余长度</div>
+                    <div class="panel-body" style="height: 70px;">
+                        <input v-model="hpLengthRest" maxlength="20" type="number" class="form-control">
+                    </div>
+                </div>
+                <div class="panel panel-default" style="width: 20%; float: left">
+                    <div class="panel-heading">剩余血量（出刀前）</div>
+                    <div class="panel-body" style="height: 70px;">
+                        <input v-model="hpRest1" maxlength="20" type="number" class="form-control">
+                    </div>
+                </div>
+                <div class="panel panel-default" style="width: 20%; float: left">
+                    <div class="panel-heading">剩余血量（出刀后）</div>
+                    <div class="panel-body" style="height: 70px;">
+                        {{ hpRest2 }}
+                    </div>
+                </div>
+                <div class="panel panel-default" style="width: 20%; float: left">
+                    <div class="panel-heading">造成伤害</div>
+                    <div class="panel-body" style="height: 70px;">
+                        {{ attack }}
+                    </div>
+                </div>
+
+                <div class="mastfoot" style="position:absolute;bottom:0;width:100%;height:100px;">
+                    <div class="inner">
+                        <p>Toolkit for <a href="https://priconne-redive.jp/">プリンセスコネクト！Re:Dive</a>, by <a
+                                href="https://weibo.com/cj980129">@Azu機</a>.</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.6.11/vue.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.19.2/axios.min.js"></script>
+    <script src="../../root.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
