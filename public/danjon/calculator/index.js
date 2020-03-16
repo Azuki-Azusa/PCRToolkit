@@ -3,8 +3,8 @@ new Vue({
     data: {
         hpLengthTotal: 10,
         hpLengthRest: 10,
-        hpRest1: 3500000,
-        hpRest2: 3500000,
+        hpRest1: 35000000,
+        hpRest2: 35000000,
         attack: 0
     },
     methods: {
