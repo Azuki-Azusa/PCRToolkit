@@ -9,7 +9,7 @@ new Vue({
     },
     methods: {
         update: function() {
-            this.hpRest2 = this.hpLengthRest / this.hpLengthTotal * 3500000;
+            this.hpRest2 = this.hpLengthRest / this.hpLengthTotal * 35000000;
             this.attack = this.hpRest1 - this.hpRest2;
         }
     },
